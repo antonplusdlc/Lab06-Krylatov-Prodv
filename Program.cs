@@ -42,6 +42,40 @@
         for (int i = 1; i <= 5; i++) {
             PrintNumberInfo(i);
         }
+
+        //NumberToolkit
+
+        PrintSeparator();
+        Console.Write("first: ");
+        bool isFirst = int.TryParse(Console.ReadLine(), out int first);
+        Console.Write("second: ");
+        bool isSecond = int.TryParse(Console.ReadLine(), out int second);
+        Console.Write("three: ");
+        bool isThree = int.TryParse(Console.ReadLine(), out int three);
+
+        if (!isFirst || !isSecond || !isThree)
+        {
+            Console.WriteLine("NOT INT");
+            return;
+        }
+
+        Console.WriteLine($"{first} prime: {isPrime(first)}");
+        Console.WriteLine($"{second} prime: {isPrime(second)}");
+        Console.WriteLine($"{three} prime: {isPrime(three)}");
+
+        PrintSeparator();
+
+        Console.WriteLine($"Max 3: {FindMax(first, second, three)}");
+        Console.WriteLine($"Max 2: {FindMax(first, second)}");
+
+        PrintSeparator();
+
+        Console.WriteLine($"srednee: {CalculateAverage(first, second, three):F2}");
+    }
+
+    static void PrintSeparator()
+    {
+        Console.WriteLine();
     }
 
     static void PrintHeader() {
@@ -92,5 +126,41 @@
     static void PrintNumberInfo(int number) {
         string parity = IsEven(number) ? "чётное" : "нечётное";
         Console.WriteLine($"{number} — {parity} число");
+    }
+
+    static bool isPrime(int num)
+    {
+        if (num < 2) return false;
+
+        for (int i = 2; i < num; i++)
+        {
+            if (num % i == 0) return false;
+        }
+
+        return true;
+    }
+
+    static int FindMax(int a, int b, int c)
+    {
+        int max = a;
+
+        if (b > max) max = b;
+        if (c > max) max = c;
+
+        return max;
+    }
+
+    static int FindMax(int a, int b)
+    {
+        int max = a;
+
+        if (b > max) max = b;
+
+        return max;
+    }
+
+    static double CalculateAverage(int a, int b, int c)
+    {
+        return (double)(a + b + c) / 3;
     }
 }
