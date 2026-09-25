@@ -79,7 +79,7 @@
         Console.WriteLine($"{MetersToFeet(7):F2}");
         Console.WriteLine($"{MetersToFeet(3.2):F2}");
         Console.WriteLine($"{CelsiusToFahrenheit(0)}");
-        Console.WriteLine($"{CelsiusToFahrenheit(30)}");
+        Console.WriteLine($"{CelsiusToFahrenheit(30)}");//
     }
 
     static void PrintSeparator()
