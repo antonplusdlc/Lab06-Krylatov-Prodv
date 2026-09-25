@@ -1,5 +1,7 @@
 ﻿class Program
 {
+    const double fut = 3.28084;
+
     static void Main()
     {
         PrintHeader();
@@ -71,6 +73,13 @@
         PrintSeparator();
 
         Console.WriteLine($"srednee: {CalculateAverage(first, second, three):F2}");
+
+        PrintSeparator();
+
+        Console.WriteLine($"{MetersToFeet(7):F2}");
+        Console.WriteLine($"{MetersToFeet(3.2):F2}");
+        Console.WriteLine($"{CelsiusToFahrenheit(0)}");
+        Console.WriteLine($"{CelsiusToFahrenheit(30)}");
     }
 
     static void PrintSeparator()
@@ -162,5 +171,15 @@
     static double CalculateAverage(int a, int b, int c)
     {
         return (double)(a + b + c) / 3;
+    }
+
+    static double MetersToFeet(double metrs)
+    {
+        return metrs * fut;
+    }
+
+    static double CelsiusToFahrenheit(double celsius)
+    {
+        return celsius * 9 / 5 + 32;
     }
 }
