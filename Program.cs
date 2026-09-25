@@ -79,7 +79,13 @@
         Console.WriteLine($"{MetersToFeet(7):F2}");
         Console.WriteLine($"{MetersToFeet(3.2):F2}");
         Console.WriteLine($"{CelsiusToFahrenheit(0)}");
-        Console.WriteLine($"{CelsiusToFahrenheit(30)}");//
+        Console.WriteLine($"{CelsiusToFahrenheit(30)}");
+
+        //PasswordChecker
+        PrintSeparator();
+        Console.Write("password: ");
+        string passw = Console.ReadLine();
+        Console.WriteLine($"is valid: {IsPasswordValid(passw)}");
     }
 
     static void PrintSeparator()
@@ -181,5 +187,52 @@
     static double CelsiusToFahrenheit(double celsius)
     {
         return celsius * 9 / 5 + 32;
+    }
+
+    static bool HasMinLength(string passw, int min)
+    {
+        if (passw.Length >= min) return true;
+        return false;
+    }
+
+    static bool HasDigit(string passw)
+    {
+        foreach (char pass in passw)
+        {
+            if (char.IsDigit(pass)) return true;
+        }
+
+        return false;
+    }
+
+    static bool HasUpperCase(string passw)
+    {
+        foreach (char pass in passw)
+        {
+            if (char.IsUpper(pass)) return true;
+        }
+
+        return false;
+    }
+
+    static bool IsPasswordValid(string passw)
+    {
+        if (!HasMinLength(passw, 8))
+        {
+            Console.WriteLine($"min length: {HasMinLength(passw, 8)}");
+            return false;
+        }
+        if (!HasDigit(passw))
+        {
+            Console.WriteLine($"has digit: {HasDigit(passw)}");
+            return false;
+        }
+        if (!HasUpperCase(passw))
+        {
+            Console.WriteLine($"has upper: {HasUpperCase(passw)}");
+            return false;
+        }
+
+        return true;
     }
 }
